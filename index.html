@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>赛奥朵拉战备地图</title>
+<meta name="description" content="火焰纹章 万缕千丝 赛奥朵拉篇：战备增强任务道具采集地图，点击任意地图节点查看该处可采集的全部素材">
+<link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="panel">
+    <header class="panel-head">
+      <h1>赛奥朵拉篇 · 战备增强</h1>
+      <p class="sub">火焰纹章 万缕千丝 · 任务道具与采集点地图</p>
+    </header>
+
+    <section class="search">
+      <div class="search-head"><span>素材查找</span><button id="picker-clear" type="button">清除</button></div>
+      <div class="picker" id="picker">
+        <button id="picker-btn" type="button" class="picker-btn" aria-haspopup="listbox" aria-expanded="false"><span class="pk-label">选择素材…</span><span aria-hidden="true">▾</span></button>
+        <div class="picker-pop" id="picker-pop" hidden>
+          <input id="picker-input" type="search" placeholder="搜索素材名（简中或日文）" autocomplete="off" aria-label="搜索素材">
+          <div class="pk-tabs" id="picker-tabs" role="tablist" aria-label="素材种类"></div>
+          <div class="pk-list" id="picker-list" role="listbox" aria-multiselectable="true"></div>
+          <button type="button" class="pk-close" id="picker-close">收起 ▴</button>
+        </div>
+      </div>
+      <div id="search-result"></div>
+    </section>
+
+    <nav class="chapters" id="chapters" aria-label="章节"></nav>
+
+    <section class="missions" id="missions"></section>
+
+    <section class="options">
+      <label><input type="checkbox" id="opt-labels" checked> 显示地名</label>
+      <label><input type="checkbox" id="opt-gather" checked> 显示全部采集点（点击查看可采集素材）</label>
+      <label><input type="checkbox" id="opt-all"> 显示其他地点（据点、驿站、关卡等）</label>
+      <label><input type="checkbox" id="opt-hide-done"> 隐藏已完成任务</label>
+    </section>
+
+    <section class="legend" id="legend" aria-label="图例"></section>
+
+    <footer class="info">
+      <ul>
+        <li>「战备增强委托」仅限赛奥朵拉篇，第 5 章解锁，在据点向波拿帕尔特接取、交付</li>
+        <li>期限均为 10/24（周三），每个任务报酬 5500 G</li>
+        <li>勾选 ✓ 可记录已交付的任务（保存在本机浏览器）</li>
+        <li>名称带 <span class="ja-mark">日</span> 标记的条目尚未找到官方简中译名，暂时显示日文原名</li>
+        <li>地图底图为日文版</li>
+      </ul>
+      <p class="credit" id="credit">
+        地点、坐标与采集素材（日文）：<a href="https://game8.jp/fe-banshisenko/816496" target="_blank" rel="noopener">Game8 世界地图</a><br>
+        战备增强任务清单：<a href="https://game8.jp/fe-banshisenko/817097" target="_blank" rel="noopener">Game8 戦備増強ミッション一覧</a><br>
+        简中地名・素材名与说明（游戏内原文）：<a href="https://fire-emblem-fw.site/" target="_blank" rel="noopener">fire-emblem-fw.site</a>，逐点对齐记录见 <code>data/names-zh.json</code><br>
+        页面参考：<a href="https://7rm7h6jztv-cmd.github.io/FEMap/" target="_blank" rel="noopener">セオドラ戦備増強地圖</a><br>
+        © Nintendo / INTELLIGENT SYSTEMS。本站为非官方玩家工具。
+      </p>
+    </footer>
+  </aside>
+
+  <main class="map-wrap">
+    <div id="map"></div>
+  </main>
+</div>
+
+<script src="vendor/leaflet/leaflet.js"></script>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
